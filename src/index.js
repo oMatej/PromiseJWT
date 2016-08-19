@@ -16,9 +16,7 @@ export const verify = (token = null, secretOrPublicKey = 'secret', options = {})
   return new Promise((resolve, reject) => {
     jwt.verify(token, secretOrPublicKey, (error, success) => {
       if (error) {
-        return reject(Object.assign(error, {
-          status: 401, errors: [{ path: 'global', message: 'Brak autoryzacji.' }]
-        }));
+        return reject(error);
       }
       return resolve(success);
     });

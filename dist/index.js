@@ -34,9 +34,7 @@ var verify = exports.verify = function verify() {
   return new Promise(function (resolve, reject) {
     _jsonwebtoken2.default.verify(token, secretOrPublicKey, function (error, success) {
       if (error) {
-        return reject(Object.assign(error, {
-          status: 401, errors: [{ path: 'global', message: 'Brak autoryzacji.' }]
-        }));
+        return reject(error);
       }
       return resolve(success);
     });
